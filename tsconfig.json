@@ -5,7 +5,8 @@
     "target": "es5",
     "allowJs": true,
     "experimentalDecorators": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "noUnusedLocals": true
   },
   "exclude": [
     "node_modules",
