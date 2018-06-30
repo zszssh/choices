@@ -1,7 +1,7 @@
 {
   "ver": "1.1.0",
   "uuid": "d94a1f71-938b-44d6-9ff8-95a40fa778f0",
-  "maxWidth": 256,
+  "maxWidth": 512,
   "maxHeight": 256,
   "padding": 2,
   "allowRotation": true,

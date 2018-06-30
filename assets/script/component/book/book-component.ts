@@ -24,6 +24,12 @@ const books = {
 export default class BookComponent extends cc.Component {
 
     @property(cc.Node)
+    private detailNode: cc.Node = null;
+
+    @property(cc.Node)
+    private commentNode: cc.Node = null;
+
+    @property(cc.Node)
     private nodeList: cc.Node[] = [];
 
     @property(cc.Label)
@@ -32,23 +38,45 @@ export default class BookComponent extends cc.Component {
     @property(cc.Label)
     private descLabel: cc.Label = null;
 
+    @property(cc.Node)
+    private commentNodeList: cc.Node[] = [];
+
+    @property(cc.Label)
+    private commentNameLabel: cc.Label = null;
+
     protected onLoad(): void {
         let pageNode: cc.Node;
+        let commentPageNode: cc.Node;
         let bookName = TempHelper.getInstance().getBookName();
         this.nameLabel.string = bookName;
+        this.commentNameLabel.string = bookName;
         let bookData: BookData = books[bookName];
         if (bookData) {
             pageNode = this.nodeList[bookData.page];
+            commentPageNode = this.commentNodeList[bookData.page];
             pageNode.active = true;
+            commentPageNode.active = true;
             this.descLabel.string = bookData.desc;
         } else {
             pageNode = this.nodeList[0];
+            commentPageNode = this.commentNodeList[0];
             pageNode.active = true;
+            commentPageNode.active = true;
             this.descLabel.string = '暂时没有本书的简介'
         }
     }
 
     protected onClickCoverBtn(): void {
         this.node.destroy();
+    }
+
+    protected onClickCommentBtn(): void {
+        this.detailNode.active = false;
+        this.commentNode.active = true;
+    }
+
+    protected onClickBackBtn(): void {
+        this.detailNode.active = true;
+        this.commentNode.active = false;
     }
 }
